@@ -1,0 +1,938 @@
+  abf attach                               abf attach <ip4|ip6> [del] policy <value> <interface>
+  abf policy                               abf policy [add|del] id <index> acl <index> via ...
+  adjacency counters                       adjacency counters [enable|disable]
+  adl allowlist                            adl allowlist <interface-name> [ip4][ip6][default][fib-id <NN>][disable]
+  adl interface                            adl interface <interface-name> [disable]
+  api trace                                api trace [on|off][first <n>][last <n>][status][free][post-mortem-on][dump|custom-dump|save|replay <file>]
+  app ns                                   app ns [add] id <namespace-id> secret <secret> sw_if_index <sw_if_index>
+  bfd key del                              bfd key del conf-key-id <id>
+  bfd key set                              bfd key set conf-key-id <id> type <keyed-sha1|meticulous-keyed-sha1>  secret <secret>
+  bfd udp echo-source del                  bfd udp echo-source del
+  bfd udp echo-source set                  bfd udp echo-source set interface <interface>
+  bfd udp session add                      bfd udp session add interface <interface> local-addr <local-address> peer-addr <peer-address> desired-min-tx <desired min tx interval> required-min-rx <required min rx interval> detect-mult <detect multiplier> [ conf-key-id <config key ID> bfd-key-id <BFD key ID>]
+  bfd udp session auth activate            bfd udp session auth activate interface <interface> local-addr <local-address> peer-addr <peer-address> conf-key-id <config key ID> bfd-key-id <BFD key ID> [ delayed <yes|no> ]
+  bfd udp session auth deactivate          bfd udp session auth deactivate interface <interface> local-addr <local-address> peer-addr <peer-address>[ delayed <yes|no> ]
+  bfd udp session del                      bfd udp session del interface <interface> local-addr <local-address> peer-addr<peer-address> 
+  bfd udp session mod                      bfd udp session mod interface <interface> local-addr <local-address> peer-addr <peer-address> desired-min-tx <desired min tx interval> required-min-rx <required min rx interval> detect-mult <detect multiplier> 
+  bfd udp session set-flags                bfd udp session set-flags interface <interface> local-addr <local-address> peer-addr <peer-address> admin <up|down>
+  bier route                               bier route [add|del] sd <sud-domain> set <set> bsl <bit-string-length> bp <bit-position> via [next-hop-address] [next-hop-interface] [next-hop-table <value>] [weight <value>] [preference <value>] [udp-encap-id <value>] [ip4-lookup-in-table <value>] [ip6-lookup-in-table <value>] [mpls-lookup-in-table <value>] [resolve-via-host] [resolve-via-connected] [rx-ip4 <interface>] [out-labels <value value value>]
+  bier table                               bier table [add|del] sd <sub-domain> set <SET> bsl <bit-string-length> [mpls <label>]
+  binary-api                               binary-api [help] <name> [<args>]
+  bond add                                 bond add <BondEthernetx> <member-interface> [passive] [long-timeout]
+  bond del                                 bond del <member-interface>
+  buffer metadata tracking                 buffer metadata tracking [on][off]
+  builtinurl enable                        Turn on builtin http/https GET and POST urls
+  bvi create                               bvi create [mac <mac-addr>] [instance <instance>]
+  bvi delete                               bvi delete <interface>
+  cdp                                      cdp enable | disable
+  classifier-acls enable                   classifier-acls enable <interface-name> [del]
+  classifier-acls set-interface            classifier-acls set-interface <interface-name> acl-list-id <acl-list-id> [del]
+  classify filter                          classify filter <intfc> | pcap mask <mask-value> match <match-value>
+  | trace mask <mask-value> match <match-value> [del]
+    [buckets <nn>] [memory-size <n>]
+  classify session                         classify session [hit-next|l2-input-hit-next|l2-output-hit-next|acl-hit-next <next_index>|policer-hit-next <policer_name>]
+ table-index <nn> match [hex] [l2] [l3 ip4] [opaque-index <index>]
+ [action set-ip4-fib-id|set-ip6-fib-id|set-sr-policy-index <n>] [del]
+  classify table                           classify table [miss-next|l2-miss_next|acl-miss-next <next_index>]
+ mask <mask-value> buckets <nn> [skip <n>] [match <n>]
+ [current-data-flag <n>] [current-data-offset <n>] [table <n>]
+ [memory-size <nn>[M][G]] [next-table <n>]
+ [del] [del-chain]
+  clear acl-plugin sessions                clear acl-plugin sessions
+  clear api histogram                      clear api histogram
+  clear dpdk crypto devices statistics     clear dpdk crypto devices statistics
+  clear dpdk crypto placement              clear dpdk crypto placement <device> [<thread>]
+  clear errors                             Clear error counters
+  clear fib walk                           clear fib walk
+  clear hardware-interfaces                clear hardware-interfaces [<interface> [<interface> [..]]] [<sw_idx> [<sw_idx> [..]]]
+  clear http static cache                  clear http static cache
+  clear igmp                               clear igmp int <interface>
+  clear interface tag                      clear interface tag <interface>
+  clear interfaces                         clear interfaces
+  clear ioam rewrite                       clear ioam rewrite
+  clear ioam-trace profile                 clear ioam-trace profile [<index>|all]
+  clear ipsec counters                     clear ipsec counters
+  clear ipsec sa                           clear ipsec sa [index]
+  clear l2fib                              clear l2fib
+  clear l2tp counters                      clear all active counters
+  clear logging                            clear logging
+  clear mactime                            clear mactime counters
+  clear nat44 sessions                     clear nat44 sessions
+  clear node counters                      Clear node counters
+  clear pot profile                        clear pot profile [<index>|all]
+  clear runtime                            Clear packet processing runtime statistics
+  clear session                            clear session thread <thread> session <index>
+  clear sr localsid-counters               clear sr localsid-counters
+  clear tcp stats                          clear tcp stats
+  clear trace                              Clear trace buffer and free memory
+  clear vxlan-gpe-ioam rewrite             clear vxlan-gpe-ioam rewrite
+  cnat snat exclude                        cnat snat exclude [ip]
+  cnat snat with                           cnat snat with [<ip4-address>][<ip6-address>][sw_if_index]
+  cnat translation                         cnat translation [add|del] proto [TCP|UDP] [vip|real] [ip|sw_if_index [v6]] [port] [to [ip|sw_if_index [v6]] [port]->[ip|sw_if_index [v6]] [port]]
+  configure policer                        configure policer name <name> <params> 
+  create 6rd tunnel                        create 6rd tunnel ip6-pfx <ip6-pfx> ip4-pfx <ip4-pfx> ip4-src <ip4-addr> ip4-table-id <ID> ip6-table-id <ID> [security-check]
+  create bond                              create bond mode {round-robin | active-backup | broadcast | {lacp | xor} [load-balance { l2 | l23 | l34 } [numa-only]]} [hw-addr <mac-address>] [id <if-id>] [gso]
+  create bridge-domain                     create bridge-domain <bridge-domain-id> [learn <0|1>] [forward <0|1>] [uu-flood <0|1>] [flood <0|1>] [arp-term <0|1>] [arp-ufwd <0|1>] [mac-age <nn>] [bd-tag <tag>] [del]
+  create geneve tunnel                     create geneve tunnel local <local-vtep-addr> {remote <remote-vtep-addr>|group <mcast-vtep-addr> <intf-name>} vni <nn> [encap-vrf-id <nn>] [decap-next [l2|node <name>]] [l3-mode] [del]
+  create gre tunnel                        create gre tunnel src <addr> dst <addr> [instance <n>] [outer-fib-id <fib>] [teb | erspan <session-id>] [del] [multipoint]
+  create gtpu tunnel                       create gtpu tunnel src <local-tep-addr> {dst <remote-tep-addr>|group <mcast-addr> <intf-name>} teid <nn> [tteid <nn>] [encap-vrf-id <nn>] [decap-next [l2|ip4|ip6|node <name>]] [del | upd-tteid <nn>]
+  create host-interface                    create host-interface name <ifname> [hw-addr <mac-addr>]
+  create interface af_xdp                  create interface af_xdp <host-if linux-ifname> [name ifname] [rx-queue-size size] [tx-queue-size size] [num-rx-queues <num|all>] [prog pathname] [zero-copy|no-zero-copy]
+  create interface avf                     create interface avf <pci-address> [rx-queue-size <size>] [tx-queue-size <size>] [num-rx-queues <size>]
+  create interface memif                   create interface memif [id <id>] [socket-id <socket-id>] [ring-size <size>] [buffer-size <size>] [hw-addr <mac-address>] <master|slave> [rx-queues <number>] [tx-queues <number>] [mode ip] [secret <string>]
+  create interface rdma                    create interface rdma <host-if ifname> [name <name>] [rx-queue-size <size>] [tx-queue-size <size>] [num-rx-queues <size>] [mode <auto|ibv|dv] [no-multi-seg] [no-striding] [max-pktlen <size>]
+  create interface virtio                  create interface virtio <pci-address> [feature-mask <hex-mask>] [gso-enabled] [csum-enabled] [buffering [size <buffering-szie>]] [packed]
+  create interface vmxnet3                 create interface vmxnet3 <pci-address> [rx-queue-size <size>] [tx-queue-size <size>] [num-tx-queues <number>] [num-rx-queues <number>] [bind] [gso]
+  create ipip tunnel                       create ipip tunnel src <addr> dst <addr> [instance <n>] [outer-table-id <ID>] [p2mp]
+  create ipsec tunnel                      create ipsec tunnel local-ip <addr> local-spi <spi> remote-ip <addr> remote-spi <spi> [instance <inst_num>] [udp-encap] [use-esn] [use-anti-replay] [tx-table <table-id>]
+  create l2tpv3 tunnel                     create l2tpv3 tunnel client <ip6> our <ip6> local-cookie <hex> remote-cookie <hex> local-session <dec> remote-session <dec>
+  create loopback interface                create loopback interface [mac <mac-addr>] [instance <instance>]
+  create memif socket                      create memif socket [id <id>] [filename <path>]
+  create nsh entry                         create nsh entry {nsp <nn> nsi <nn>} [ttl <nn>] [md-type <nn>]  [c1 <nn> c2 <nn> c3 <nn> c4 <nn>] [tlv-ioam-trace] [del]
+  create nsh map                           create nsh map nsp <nn> nsi <nn> [del] mapped-nsp <nn> mapped-nsi <nn> nsh_action [swap|push|pop] [encap-gre4-intf <nn> | encap-gre4-intf <nn> | encap-vxlan-gpe-intf <nn> | encap-lisp-gpe-intf <nn>  encap-vxlan4-intf <nn> | encap-vxlan6-intf <nn>| encap-eth-intf <nn> | encap-none]
+  create packet-generator                  create packet-generator interface <interface name> [gso-enabled gso-size <size> [coalesce-enabled]]
+  create pppoe cp                          create pppoe cp-if-index <intfc> [del]
+  create pppoe session                     create pppoe session client-ip <client-ip> session-id <nn> client-mac <client-mac> [decap-vrf-id <nn>] [del]
+  create sub-interfaces                    create sub-interfaces <interface> {<subId> [default|untagged]} | {<subId>-<subId>} | {<subId> dot1q|dot1ad <vlanId>|any [inner-dot1q <vlanId>|any] [exact-match]}
+  create tap                               create tap {id <if-id>} [hw-addr <mac-address>] [num-rx-queues <n>] [rx-ring-size <size>] [tx-ring-size <size>] [host-ns <netns>] [host-bridge <bridge-name>] [host-ip4-addr <ip4addr/mask>] [host-ip6-addr <ip6-addr>] [host-ip4-gw <ip4-addr>] [host-ip6-gw <ip6-addr>] [host-mac-addr <host-mac-address>] [host-if-name <name>] [host-mtu-size <size>] [no-gso|gso [gro-coalesce]|csum-offload] [persist] [attach] [tun] [packed] [in-order] [no-vppsb]
+  create teib                              create teib <interface> peer <addr> nh <addr> [nh-table-id <ID>]
+  create vhost-user                        create vhost-user socket <socket-filename> [server] [feature-mask <hex>] [hwaddr <mac-addr>] [renumber <dev_instance>] [gso] [packed]
+  create vxlan tunnel                      create vxlan tunnel src <local-vtep-addr> {dst <remote-vtep-addr>|group <mcast-vtep-addr> <intf-name>} vni <nn> dest_port <nn> [instance <id>] [encap-vrf-id <nn>] [decap-next [l2|node <name>]] [del]
+  create vxlan-gbp tunnel                  create vxlan-gbp tunnel src <local-vtep-addr> {dst <remote-vtep-addr>|group <mcast-vtep-addr> <intf-name>} vni <nn> [instance <id>] [encap-vrf-id <nn>] [decap-next [l2|node <name>]] [del]
+  create vxlan-gpe tunnel                  create vxlan-gpe tunnel local <local-addr>  {remote <remote-addr>|group <mcast-addr> <intf-name>} vni <nn> [next-ip4][next-ip6][next-ethernet][next-nsh] [encap-vrf-id <nn>] [decap-vrf-id <nn>] [del]
+  debug lacp                               debug lacp <interface> <on | off>
+  debug nat44 fib expire                   debug nat44 fib expire <fib-index>
+  debug nat44 fib registration             debug nat44 fib registration
+  define                                   define <variable-name> <value>
+  delete 6rd tunnel                        delete 6rd tunnel sw_if_index <sw_if_index>
+  delete bond                              delete bond {<interface> | sw_if_index <sw_idx>}
+  delete host-interface                    delete host-interface name <ifname>
+  delete interface af_xdp                  delete interface af_xdp {<interface> | sw_if_index <sw_idx>}
+  delete interface avf                     delete interface avf {<interface> | sw_if_index <sw_idx>}
+  delete interface memif                   delete interface memif {<interface> | sw_if_index <sw_idx>}
+  delete interface rdma                    delete interface rdma {<interface> | sw_if_index <sw_idx>}
+  delete interface virtio                  delete interface virtio {<interface> | sw_if_index <sw_idx>}
+  delete interface vmxnet3                 delete interface vmxnet3 {<interface> | sw_if_index <sw_idx>}
+  delete ipip tunnel                       delete ipip tunnel sw_if_index <sw_if_index>
+  delete loopback interface                delete loopback interface intfc <interface>
+  delete memif socket                      delete memif socket [id <id>]
+  delete sub-interface                     delete sub-interface <interface>
+  delete tap                               delete tap {<interface> | sw_if_index <sw_idx>}
+  delete teib                              delete teib <interface> peer <addr>
+  delete vhost-user                        delete vhost-user {<interface> | sw_if_index <sw_idx>}
+  det44 add                                det44 add in <addr>/<plen> out <addr>/<plen> [del]
+  det44 close session in                   det44 close session in <in_addr>:<in_port> <ext_addr>:<ext_port>
+  det44 close session out                  det44 close session out <out_addr>:<out_port> <ext_addr>:<ext_port>
+  det44 forward                            det44 forward <addr>
+  det44 plugin                             det44 plugin <enable [inside vrf] [outside vrf]|disable>
+  det44 reverse                            det44 reverse <addr>:<port>
+  dhcp6 client                             dhcp6 client <interface> [disable]
+  dhcp6 pd client                          dhcp6 pd client <interface> (prefix group <string> | disable)
+  disable ip6 interface                    disable ip6 interface <interface>
+  disable tap-inject debug                 disable tap-inject debug
+  disable tap-inject                       disable tap-inject
+  dns cache                                dns cache [add|del|clear] <name> [ip4][ip6]
+  dslite add pool address                  dslite add pool address <ip4-range-start> [- <ip4-range-end>]  [del]
+  dslite set aftr-tunnel-endpoint-address  dslite set aftr-tunnel-endpoint-address <ip6>
+  dslite set b4-tunnel-endpoint-address    dslite set b4-tunnel-endpoint-address <ip6>
+  echo                                     echo <rest-of-line>
+  enable ip6 interface                     enable ip6 interface <interface>
+  enable tap-inject debug                  enable tap-inject debug
+  enable tap-inject                        enable tap-inject
+  event-logger clear                       Clear the event log
+  event-logger resize                      event-logger resize <nnn>
+  event-logger restart                     Restart the event-logger
+  event-logger save                        event-logger save <filename> (saves log in /tmp/<filename>)
+  event-logger stop                        Stop the event-logger
+  event-logger trace                       event-logger trace [api][cli][barrier][dispatch]
+[circuit-node <name> e.g. ethernet-input][disable]
+  exec                                     exec <filename>
+  flowprobe feature add-del                flowprobe feature add-del <interface-name> <l2|ip4|ip6> disable
+  flowprobe params                         flowprobe params record <[l2] [l3] [l4]> [active <timer> passive <timer>]
+  fwabf attach                             fwabf attach <ip4|ip6> [del] policy <value> [priority <value>] <interface>
+  fwabf link                               fwabf link [add|del] label <[0..254]> via <address> <if name>
+  fwabf policy                             fwabf policy [add|del] id <index> acl <index> [override_default_route] action [select_group random] [fallback drop] [group <id>] [random|quality] labels <label1,label2,...> [group <id> [random|quality] labels <label1,label2,...>] ...
+  fwabf quality                            fwabf quality [sw_if_index <sw_if_index> | <if name>] loss <0..100> delay <value> jitter <value>
+  gbp bridge-domain                        gbp bridge-domain [del] bd <ID> bvi <interface> [uu-fwd <interface>] [bm-flood <interface>] [flags <flags>]
+  gbp contract                             gbp contract [del] src-epg <ID> dst-epg <ID> acl-index <ACL>
+  gbp endpoint                             gbp endpoint del <handle> | [add] <interface> sclass <SCLASS> ip <IP> mac <MAC> [flags <flags>]
+  gbp endpoint-group                       gbp endpoint-group [del] epg <ID> bd <ID> rd <ID> [sclass <ID>] [<interface>]
+  gbp ext-itf                              gbp ext-itf [del] <interface> bd <ID> rd <ID> [anon-l3-out]
+  gbp route-domain                         gbp route-domain [del] rd <ID> ip4-table-id <ID> ip6-table-id <ID> [ip4-uu <interface>] [ip6-uu <interface>]
+  gbp subnet                               gbp subnet [del] rd <ID> prefix <prefix> type <type> [<interface>] [sclass <sclass>]
+  gpe encap                                gpe encap [lisp|vxlan]
+  gpe entry                                gpe entry add/del vni <vni> vrf/bd <id> [leid <leid>]reid <reid> [loc-pair <lloc> <rloc> w <weight>] [negative action <action>]
+  gpe iface                                gpe iface add/del vni <vni> vrf <vrf>
+  gpe native-forward                       gpe native-forward [del] via <nh-ip-addr> [iface] [table <table>]
+  gpe                                      gpe [enable|disable]
+  history                                  Show current session command history
+  http static server                       http static server www-root <path> [prealloc-fifos <nn>]
+[private-segment-size <nnMG>] [fifo-size <nbytes>] [uri <uri>]
+[debug [nn]]
+  igmp listen                              igmp listen [<enable|disable>] int <interface> saddr <ip4-address> gaddr <ip4-address>
+  igmp proxy-dev itf                       igmp proxy-dev itf <add|del> vrf-id <table-id> <interface>
+  igmp proxy-dev                           igmp proxy-dev <add|del> vrf-id <table-id> <interface>
+  igmp                                     igmp <enable|disable> <host|router> <interface>
+  ikev2 dpd disable                        ikev2 dpd disable
+  ikev2 initiate                           ikev2 initiate sa-init <profile id>
+ikev2 initiate del-child-sa <child sa ispi>
+ikev2 initiate del-sa <sa ispi>
+ikev2 initiate rekey-child-sa <child sa ispi>
+  ikev2 profile                            ikev2 profile [add|del] <id>
+ikev2 profile set <id> auth [rsa-sig|shared-key-mic] [cert-file|string|hex] <data>
+ikev2 profile set <id> id <local|remote> <type> <data>
+ikev2 profile set <id> tunnel <interface>
+ikev2 profile set <id> udp-encap
+ikev2 profile set <id> traffic-selector <local|remote> ip-range <start-addr> - <end-addr> port-range <start-port> - <end-port> protocol <protocol-number>
+ikev2 profile set <id> responder <interface> <addr>
+ikev2 profile set <id> ike-crypto-alg <crypto alg> <key size> ike-integ-alg <integ alg> ike-dh <dh type>
+ikev2 profile set <id> esp-crypto-alg <crypto alg> <key size> [esp-integ-alg <integ alg>] [esn <yes|no>]
+ikev2 profile set <id> replay-check <on|off> window-len <Max 1024>
+ikev2 profile set <id> sa-lifetime <seconds> <jitter> <handover> <max bytes>
+ikev2 profile set <id> ike-lifetime <seconds>
+ikev2 profile set <id> pfs [on|off]
+ikev2 profile set <id> disable natt
+  ikev2 set liveness                       ikev2 set liveness <period> <max-retires>
+  ikev2 set logging level                  ikev2 set logging level <0-5>
+  ila entry                                ila entry [type <type>] [sir-address <address>] [locator <locator>] [vnid <hex-vnid>] [adj-index <adj-index>] [next-hop <next-hop>] [direction (bidir|sir2ila|ila2sir)] [csum-mode (no-action|neutral-map|transport-adjust)] [del]
+  ila interface                            ila interface <interface-name> [disable]
+  interface collect detailed-stats         interface collect detailed-stats <enable|disable>
+  ip container                             ip container <address> <interface>
+  ip mroute                                ip mroute [add|del] <dst-ip-addr>/<width> [table <table-id>] [rpf-id <ID>] [via <next-hop-ip-addr> [<interface>],
+  ip neighbor                              ip neighbor [del] <intfc> <ip-address> <mac-address> [static] [no-fib-entry] [count <count>] [fib-id <fib-id>] [proxy <lo-addr> - <hi-addr>]
+  ip punt policer                          ip punt policer [add|del] <index>
+  ip punt redirect                         ip punt redirect [add|del] rx [<interface>|all] via [<nh>] <tx_interface>
+  ip route                                 ip route [add|del] [count <n>] <dst-ip-addr>/<width> [table <table-id>] via [next-hop-address] [next-hop-interface] [next-hop-table <value>] [weight <value>] [preference <value>] [udp-encap-id <value>] [ip4-lookup-in-table <value>] [ip6-lookup-in-table <value>] [mpls-lookup-in-table <value>] [resolve-via-host] [resolve-via-connected] [rx-ip4 <interface>] [out-labels <value value value>]
+  ip syn filter                            ip syn filter <interface-name> [disable]
+  ip table                                 ip table [add|del] <table-id>
+  ip virtual                               ip virtual <addr> <interface> [mac <Mi>]+ [next-hop <ip4_address>]+
+  ip6 nd address autoconfig                ip6 nd address autoconfig <interface> [default-route|disable]
+  ip6 nd                                   ip6 nd <interface> ...
+  ip6 punt policer                         ip6 punt policer [add|del] <index>
+  ip6 punt redirect                        ip6 punt redirect [add|del] rx [<interface>|all] via [<nh>] <tx_interface>
+  ip6 table                                ip6 table [add|del] <table-id>
+  ipfix classify table                     ipfix classify table add|del <table-index>
+  ipfix flush                              flush the current ipfix data [for make test]
+  ipsec itf create                         ipsec itf create [instance <instance>]
+  ipsec itf delete                         ipsec itf delete <interface>
+  ipsec policy                             ipsec policy [add|del] spd <id> priority <n> 
+  ipsec sa                                 ipsec sa [add|del]
+  ipsec select backend                     ipsec select backend <ah|esp> <backend index>
+  ipsec spd                                ipsec spd [add|del] <id>
+  ipsec tunnel protect                     ipsec tunnel protect <interface> input-sa <SA> output-sa <SA> [add|del]
+  l2 rewrite entry                         l2 rewrite entry [index <index>] [mask <hex-mask>] [value <hex-value>] [skip <n_bytes>] [del]
+  l2fib add                                l2fib add <mac> <bridge-domain-id> filter | <intf> [static | bvi]
+  l2fib del                                l2fib del <mac> <bridge-domain-id> []
+  l2fib flush-mac all                      l2fib flush-mac all
+  l2fib flush-mac bridge-domain            l2fib flush-mac bridge-domain <bd-id>
+  l2fib flush-mac interface                l2fib flush-mac interface <if-name>
+  l3xc                                     l3xc [add|del] <INTERFACE> via ...
+  lb as                                    lb as <vip-prefix> [protocol (tcp|udp) port <n>] [<address> [<address> [...]]] [del] [flush]
+  lb conf                                  lb conf [ip4-src-address <addr>] [ip6-src-address <addr>] [buckets <n>] [timeout <s>]
+  lb flush vip                             lb flush vip <prefix> [protocol (tcp|udp) port <n>]
+  lb set interface nat4                    lb set interface nat4 in <intfc> [del]
+  lb set interface nat6                    lb set interface nat6 in <intfc> [del]
+  lb vip                                   lb vip <prefix> [protocol (tcp|udp) port <n>] [encap (gre6|gre4|l3dsr|nat4|nat6)] [dscp <n>] [type (nodeport|clusterip) target_port <n>] [new_len <n>] [del]
+  lisp adjacency                           lisp adjacency add|del vni <vni> reid <remote-eid> leid <local-eid>
+  lisp disable                             lisp disable
+  lisp eid-table map                       lisp eid-table map [del] vni <vni> vrf <vrf> | bd <bdi>
+  lisp eid-table                           lisp eid-table add/del [vni <vni>] eid <eid> locator-set <locator-set> [key <secret-key> key-id sha1|sha256 ]
+  lisp enable                              lisp enable
+  lisp locator-set                         lisp locator-set add/del <name> [iface <iface-name> p <priority> w <weight>]
+  lisp locator                             lisp locator add/del locator-set <name> iface <iface-name> p <priority> w <weight>
+  lisp map-register                        lisp map-register [enable|disable]
+  lisp map-request itr-rlocs               lisp map-request itr-rlocs add/del <locator_set_name>
+  lisp map-request mode                    lisp map-request mode dst-only|src-dst
+  lisp map-resolver                        lisp map-resolver add/del <ip_address>
+  lisp map-server                          lisp map-server add|del <ip>
+  lisp pitr                                lisp pitr [disable] ls <locator-set-name>
+  lisp remote-mapping                      lisp remote-mapping add|del [del-all] vni <vni> eid <est-eid> [action <no-action|natively-forward|send-map-request|drop>] rloc <dst-locator> p <prio> w <weight> [rloc <dst-locator> ... ]
+  lisp rloc-probe                          lisp rloc-probe [enable|disable]
+  lisp use-petr                            lisp use-petr [disable] <petr-ip>
+  loopback create-interface                loopback create-interface [mac <mac-addr>] [instance <instance>]
+  loopback delete-interface                loopback delete-interface intfc <interface>
+  mactime enable-disable                   mactime enable-disable <interface-name> [disable]
+  map add domain                           map add domain [tag <tag>] ip4-pfx <ip4-pfx> ip6-pfx <ip6-pfx> ip6-src <ip6-pfx> ea-bits-len <n> psid-offset <n> psid-len <n> [map-t] [mtu <mtu>]
+  map add rule                             map add rule index <domain> psid <psid> ip6-dst <ip6-addr>
+  map del domain                           map del domain index <domain>
+  map interface                            map interface <interface-name> [map-t] [del]
+  map params fragment                      map params fragment inner|outer ignore-df|honor-df
+  map params icmp source-address           map params icmp source-address <ip4-address>
+  map params icmp6 unreachables            map params icmp6 unreachables {on|off}
+  map params pre-resolve                    map params pre-resolve {ip4-nh <address>} | {ip6-nh <address>}
+  map params security-check                map params security-check enable|disable fragments on|off
+  map params tcp-mss                       map params tcp-mss <value>
+  map params traffic-class                 map params traffic-class {0x0-0xff | copy}
+  memory-trace                             memory-trace on|off [api-segment][stats-segment][main-heap]
+                   [numa-heap <numa-id>]
+  mpls local-label                         mpls local-label [add|del] <label-value> [eos|non-eos] via [next-hop-address] [next-hop-interface] [next-hop-table <value>] [weight <value>] [preference <value>] [udp-encap-id <value>] [ip4-lookup-in-table <value>] [ip6-lookup-in-table <value>] [mpls-lookup-in-table <value>] [resolve-via-host] [resolve-via-attached] [rx-ip4 <interface>] [out-labels <value value value>]
+  mpls table                               mpls table [add|del] <table-id>
+  mpls tunnel                              mpls tunnel [multicast] [l2-only] via [next-hop-address] [next-hop-interface] [next-hop-table <value>] [weight <value>] [preference <value>] [udp-encap-id <value>] [ip4-lookup-in-table <value>] [ip6-lookup-in-table <value>] [mpls-lookup-in-table <value>] [resolve-via-host] [resolve-via-connected] [rx-ip4 <interface>] [out-labels <value value value>]
+  nat addr-port-assignment-alg             nat addr-port-assignment-alg <alg-name> [<alg-params>]
+  nat ha failover                          nat ha failover <ip4-address>:<port> [refresh-interval <sec>]
+  nat ha flush                             nat ha flush
+  nat ha listener                          nat ha listener <ip4-address>:<port> [path-mtu <path-mtu>]
+  nat ha resync                            nat ha resync
+  nat ipfix logging                        nat ipfix logging [domain <domain-id>] [src-port <port>] [disable]
+  nat mss-clamping                         nat mss-clamping <mss-value>|disable
+  nat set logging level                    nat set logging level <level>
+  nat44 add address                        nat44 add address <ip4-range-start> [- <ip4-range-end>] [tenant-vrf <vrf-id>] [twice-nat] [del]
+  nat44 add identity mapping               nat44 add identity mapping <ip4-addr>|external <interface> [<protocol> <port>] [vrf <table-id>] [del]
+  nat44 add interface address              nat44 add interface address <interface> [twice-nat] [session-recovery] [del]
+  nat44 add load-balancing back-end        nat44 add load-balancing back-end protocol tcp|udp external <addr>:<port> local <addr>:<port> [vrf <table-id>] probability <n> [del]
+  nat44 add load-balancing static mapping  nat44 add load-balancing static mapping protocol tcp|udp external <addr>:<port> local <addr>:<port> [vrf <table-id>] probability <n> [twice-nat|self-twice-nat] [out2in-only] [affinity <timeout-seconds>] [del]
+  nat44 add static mapping                 nat44 add static mapping tcp|udp|icmp local <addr> [<port|icmp-echo-id>] external <addr> [<port|icmp-echo-id>] [vrf <table-id>] [twice-nat|self-twice-nat] [out2in-only] [exact <pool-addr>] [del]
+  nat44 del session                        nat44 del session in|out <addr>:<port> tcp|udp|icmp [vrf <id>] [external-host <addr>:<port>]
+  nat44 del user                           nat44 del user <addr> [fib <index>]
+  nat44 disable                            nat44 disable
+  nat44 enable                             nat44 enable sessions <max-number> [users <max-number>] [static-mappig-only [connection-tracking]|out2in-dpo|endpoint-dependent] [inside-vrf <vrf-id>] [outside-vrf <vrf-id>] [user-sessions <max-number>]
+  nat44 forwarding                         nat44 forwarding enable|disable
+  nat64 add interface address              nat64 add interface address <interface> [del]
+  nat64 add pool address                   nat64 add pool address <ip4-range-start> [- <ip4-range-end>] [tenant-vrf <vrf-id>] [del]
+  nat64 add prefix                         nat64 add prefix <ip6-prefix>/<plen> [tenant-vrf <vrf-id>] [del] [interface <interface]
+  nat64 add static bib                     nat64 add static bib <ip6-addr> <port> <ip4-addr> <port> tcp|udp|icmp [vfr <table-id>] [del]
+  nat64 plugin                             nat64 plugin <enable [bib-buckets <count>] [bib-memory <size>] [st-buckets <count>] [st-memory <size>] | disable>
+  nat66 add static mapping                 nat66 add static mapping local <ip6-addr> external <ip6-addr> [vfr <table-id>] [del]
+  nsim cross-connect enable-disable        nsim cross-connect enable-disable <interface-name-1> <interface-name-2> [disable]
+  nsim output-feature enable-disable       nsim output-feature enable-disable <interface-name> [disable]
+  one adjacency                            one adjacency add|del vni <vni> reid <remote-eid> leid <local-eid>
+  one disable                              one disable
+  one eid-table map                        one eid-table map [del] vni <vni> vrf <vrf> | bd <bdi>
+  one eid-table                            one eid-table add/del [vni <vni>] eid <eid> locator-set <locator-set> [key <secret-key> key-id sha1|sha256 ]
+  one enable                               one enable
+  one l2 arp                               one l2 arp [del] bd <bd> mac <mac> ip <ipv4>
+  one locator-set                          one locator-set add/del <name> [iface <iface-name> p <priority> w <weight>]
+  one locator                              one locator add/del locator-set <name> iface <iface-name> p <priority> w <weight>
+  one map-register fallback-threshold      one map-register fallback-threshold <count>
+  one map-register ttl                     one map-register ttl
+  one map-register                         one map-register [enable|disable]
+  one map-request itr-rlocs                one map-request itr-rlocs add/del <locator_set_name>
+  one map-request mode                     one map-request mode dst-only|src-dst
+  one map-resolver                         one map-resolver add/del <ip_address>
+  one map-server                           one map-server add|del <ip>
+  one ndp                                  one ndp [del] bd <bd> mac <mac> ip <ipv6>
+  one nsh-mapping                          one nsh-mapping [del] ls <locator-set-name>
+  one petr mode                            one petr mode [enable|disable]
+  one pitr mode                            one pitr mode [enable|disable]
+  one pitr                                 one pitr [disable] ls <locator-set-name>
+  one remote-mapping                       one remote-mapping add|del [del-all] vni <vni> eid <est-eid> [action <no-action|natively-forward|send-map-request|drop>] rloc <dst-locator> p <prio> w <weight> [rloc <dst-locator> ... ]
+  one rloc-probe                           one rloc-probe [enable|disable]
+  one statistics flush                     Flush ONE statistics
+  one statistics                           enable/disable ONE statistics collecting
+  one use-petr                             one use-petr [disable] <petr-ip>
+  one xtr mode                             one xtr mode [enable|disable]
+  p2p_ethernet                             p2p_ethernet <intfc> <mac-address> [sub-id <id> | del]
+  packet-generator capture                 packet-generator capture <interface name> pcap <filename> [count <n>]
+  packet-generator configure               Change packet generator stream parameters
+  packet-generator delete                  Delete stream with given name
+  packet-generator disable-stream          Disable packet generator streams
+  packet-generator enable-stream           Enable packet generator streams
+  packet-generator mac-filter              packet-generator mac-filter <INTERFACE> <on|off>
+  packet-generator new                     Create packet generator stream
+  pcap dispatch trace                      pcap dispatch trace [on|off] [max <nn>] [file <name>] [status]
+              [buffer-trace <input-node-name> <nn>][post-mortem]
+  pcap trace                               pcap trace [rx] [tx] [drop] [off] [max <nn>] [intfc <interface>|any]
+           [file <name>] [status] [max-bytes-per-pkt <nnnn>][filter]
+           [preallocate-data][free-data]
+  ping                                     ping {<ip-addr> | ipv4 <ip4-addr> | ipv6 <ip6-addr>} [ipv4 <ip4-addr> | ipv6 <ip6-addr>] [source <interface>] [size <pktsize:60>] [interval <sec:1>] [repeat <cnt:5>] [table-id <id:0>] [burst <count:1>] [verbose]
+  pipe create                              pipe create [instance <instance>]
+  pipe delete                              pipe delete <interface>
+  punt socket deregister                   punt socket deregister [IPV4|ipv6] [UDP|tcp] [ALL|<port-num>]
+  punt socket register                     punt socket register [IPV4|ipv6] [UDP|tcp] [ALL|<port-num>] socket <socket>
+  qos egress map                           qos egress map id %d [delete] {[SOURCE][INPUT]=OUTPUT}
+  qos mark                                 qos mark <SOURCE> <INTERFACE> id <MAP>
+  qos mark-buffer-metadata-map             qos mark-buffer-metadata-map <intf> key [integer] value [integer] del
+  qos record                               qos record <record-source> <INTERFACE> [disable]
+  qos store                                qos store <store-source> <INTERFACE> [disable]
+  quit                                     Exit CLI
+  q                                        Exit CLI
+  renumber interface                       renumber interface <interface> <new-dev-instance>
+  restart                                  restart process
+  session replay fifo                      session replay fifo <session>
+  session rule                             session rule [add|del] appns <ns_id> proto <proto> <lcl-ip/plen> <lcl-port> <rmt-ip/plen> <rmt-port> action <action>
+  session                                  session [enable|disable]
+  set acl-plugin acl                       set acl-plugin acl <permit|deny> src <PREFIX> dst <PREFIX> proto X sport X-Y dport X-Y [tag FOO] {use comma separated list for multiple rules}
+  set acl-plugin interface                 set acl-plugin interface <interface> <input|output> <acl INDEX> [del] 
+  set acl-plugin                           set acl-plugin session timeout {{udp idle}|tcp {idle|transient}} <seconds>
+  set api-trace                            API trace [on][on tx][on rx][off][free][debug on][debug off]
+  set arp proxy                            set arp proxy [del] table-ID <table-ID> start <start-address> end <end-addres>
+  set bridge-domain arp entry              set bridge-domain arp entry <bridge-domain-id> [<ip-addr> <mac-addr> [del] | del-all]
+  set bridge-domain arp term               set bridge-domain arp term <bridge-domain-id> [disable]
+  set bridge-domain arp-ufwd               set bridge-domain arp-ufwd <bridge-domain-id> [disable]
+  set bridge-domain flood                  set bridge-domain flood <bridge-domain-id> [disable]
+  set bridge-domain forward                set bridge-domain forward <bridge-domain-id> [disable]
+  set bridge-domain learn                  set bridge-domain learn <bridge-domain-id> [disable]
+  set bridge-domain mac-age                set bridge-domain mac-age <bridge-domain-id> <mins>
+  set bridge-domain rewrite                set bridge-domain rewrite <bridge-domain> [disable]
+  set bridge-domain uu-flood               set bridge-domain uu-flood <bridge-domain-id> [disable]
+  set crypto async dispatch interrupt      set crypto async dispatch polling|interrupt
+  set crypto async dispatch polling        set crypto async dispatch polling|interrupt
+  set crypto async handler                 set crypto async handler type [type2 type3 ...] engine
+  set crypto handler                       set crypto handler cipher [cipher2 cipher3 ...] engine [simple|chained]
+  set cryptodev assignment                 set cryptodev assignment thread <thread_index> resource <inst_index>
+  set ct6                                  set ct6 [inside|outside] <interface-name> [disable]
+  set det44 timeouts                       set det44 timeouts <[udp <sec>] [tcp established <sec>] [tcp transitory <sec>] [icmp <sec>]|reset>
+  set dhcp client                          set dhcp client [del] intfc <interface> [hostname <name>]
+  set dhcp detect                          set dhcp detect [del] intfc <interface>
+  set dhcp option-82 vss                   set dhcp option-82 vss [del] table <table id> [oui <n> vpn-id <n> | vpn-ascii-id <text>]
+  set dhcp proxy                           set dhcp proxy [del] server <ip-addr> src-address <ip-addr> [server-fib-id <n>] [rx-fib-id <n>]
+  set dhcpv6 proxy                         set dhcpv6 proxy [del] server <ipv6-addr> src-address <ipv6-addr> [server-fib-id <fib-id>] [rx-fib-id <fib-id>] 
+  set dhcpv6 vss                           set dhcpv6 vss table <table-id> [oui <n> vpn-id <n> | vpn-ascii-id <text>]
+  set dpdk crypto placement                set dpdk crypto placement (<device> <thread> | auto)
+  set dpdk interface descriptors           set dpdk interface descriptors <interface> [rx <nn>] [tx <nn>]
+  set dpdk interface hqos pipe-profile     set dpdk interface hqos pipe-profile <interface>subport <subport_id> profile <profile_id> [rate <n>] [bktsize <n>] [tc0-rate <n>] [tc1-rate <n>] ... [tc12-rate <n>] [tc-period <n>] [wrr0 <n>] [wrr1 <n> [wrr2 <n>] [wrr3 <n>]
+  set dpdk interface hqos pipe             set dpdk interface hqos pipe <interface> subport <subport_id>pipe <pipe_id> profile <profile_id>
+  set dpdk interface hqos pktfield         set dpdk interface hqos pktfield <interface> id subport|pipe|tc offset <n> mask <hex-mask>
+  set dpdk interface hqos placement        set dpdk interface hqos placement <interface> thread <n>
+  set dpdk interface hqos subport-profile  set dpdk interface hqos subport-profile <interface> profile <profile_id> [rate <n>] [bktsize <n>] [tc0-rate <n>] [tc1-rate <n>] ... [tc12-rate <n>] [tc-period <n>]
+  set dpdk interface hqos subport          set dpdk interface hqos subport <interface>subport <subport_id> profile <profile_id>
+  set dpdk interface hqos tctbl            set dpdk interface hqos tctbl <interface> entry <map_val>tc <tc_id> queue <queue_id>
+  set fib walk histogram elements size     set fib walk histogram elements size
+  set fib walk quota                       set fib walk quota
+  set flow classify                        set flow classify interface <int> [ip4-table <index>]
+  [ip6-table <index>] [del]
+  set flow-offload gtpu                    set flow-offload gtpu hw <inerface-name> rx <tunnel-name> [del]
+  set flow-offload vxlan                   set flow-offload vxlan hw <interface-name> rx <tunnel-name> [del]
+  set host-interface l4-cksum-offload      set host-interface l4-cksum-offload <host-if-name> <on|off>
+  set ikev2 local key                      set ikev2 local key <file>
+  set interface bond                       set interface bond <interface> | sw_if_index <idx> weight <value>
+  set interface det44                      set interface det44 inside <intfc> outside <intfc> [del]
+  set interface feature gso                set interface feature gso <intfc> [enable | disable]
+  set interface feature                    set interface feature <intfc> <feature_name> arc <arc_name> [disable]
+  set interface handoff                    set interface handoff <interface-name> workers <workers-list> [symmetrical|asymmetrical]
+  set interface hw-class                   Set interface hardware class
+  set interface input acl                  set interface input acl intfc <int> [ip4-table <index>]
+  [ip6-table <index>] [l2-table <index>] [del]
+  set interface ip address                 set interface ip address [del] <interface> <ip-addr>/<mask> | [all]
+  set interface ip directed-broadcast      set interface enable <interface> <enable|disable>
+  set interface ip geneve-bypass           set interface ip geneve-bypass <interface> [del]
+  set interface ip gtpu-bypass             set interface ip gtpu-bypass <interface> [del]
+  set interface ip source-and-port-range-c set interface ip source-and-port-range-check <interface> [tcp-out-vrf <table-id>] [udp-out-vrf <table-id>] [tcp-in-vrf <table-id>] [udp-in-vrf <table-id>] [del]
+  set interface ip table                   set interface ip table <interface> <table-id>
+  set interface ip vxlan-bypass            set interface ip vxlan-bypass <interface> [del]
+  set interface ip vxlan-gbp-bypass        set interface ip vxlan-gbp-bypass <interface> [del]
+  set interface ip vxlan-gpe-bypass        set interface ip vxlan-gpe-bypass <interface> [del]
+  set interface ip6 geneve-bypass          set interface ip6 geneve-bypass <interface> [del]
+  set interface ip6 gtpu-bypass            set interface ip6 gtpu-bypass <interface> [del]
+  set interface ip6 l2tpv3                 set interface ip6 l2tpv3 <intfc> [del]
+  set interface ip6 table                  set interface ip6 table <interface> <table-id>
+  set interface ip6 vxlan-bypass           set interface ip6 vxlan-bypass <interface> [del]
+  set interface ip6 vxlan-gbp-bypass       set interface ip6 vxlan-gbp-bypass <interface> [del]
+  set interface ip6 vxlan-gpe-bypass       set interface ip6 vxlan-gpe-bypass <interface> [del]
+  set interface ipsec spd                  set interface ipsec spd <int> <id>
+  set interface l2 bridge                  set interface l2 bridge <interface> <bridge-domain-id> [bvi|uu-fwd] [shg]
+  set interface l2 efp-filter              set interface l2 efp-filter <interface> [disable]
+  set interface l2 flood                   set interface l2 flood <interface> [disable]
+  set interface l2 forward                 set interface l2 forward <interface> [disable]
+  set interface l2 input classify          set interface l2 input classify intfc <interface-name> [ip4-table <n>]
+  [ip6-table <n>] [other-table <n>]
+  set interface l2 l2-emulation            set interface l2 l2-emulation <interface-name> [disable|enable]
+  set interface l2 learn                   set interface l2 learn <interface> [disable]
+  set interface l2 output classify         set interface l2 output classify intfc <<interface-name>> [ip4-table <n>]
+  [ip6-table <n>] [other-table <n>]
+  set interface l2 pbb-tag-rewrite         set interface l2 pbb-tag-rewrite <interface> [disable | pop | push | translate_pbb_stag <outer_tag> dmac <address> smac <address> s_id <nn> [b_vlanid <nn>]]
+  set interface l2 rewrite                 set interface l2 rewrite <interface> [table <table index>] [miss-index <entry-index>]
+  set interface l2 tag-rewrite             set interface l2 tag-rewrite <interface> [disable | pop {1|2} | push {dot1q|dot1ad} <tag> <tag>]
+  set interface l2 xconnect                set interface l2 xconnect <interface> <peer interface>
+  set interface l2 xcrw                    set interface l2 xcrw <interface> next <node-name>
+    [del] [tx-fib-id <id>] [ipv6] rw <hex-bytes>
+  set interface l3                         set interface l3 <interface>
+  set interface lldp                       set interface lldp <interface> | sw_if_index <idx> [port-desc <string>] [mgmt-ip4 <string>] [mgmt-ip6 <string>] [mgmt-oid <string>] [disable]
+  set interface mac address                set interface mac address <interface> <mac-address>
+  set interface mpls                       Enable/Disable an interface for MPLS forwarding
+  set interface mtu                        set interface mtu [packet|ip4|ip6|mpls] <value> <interface>
+  set interface nat44                      set interface nat44 in <intfc> out <intfc> [output-feature] [del]
+  set interface nat64                      set interface nat64 in|out <intfc> [del]
+  set interface nat66                      set interface nat66 in|out <intfc> [del]
+  set interface output acl                 set interface output acl intfc <int> [ip4-table <index>]
+  [ip6-table <index>] [l2-table <index>] [del]
+  set interface promiscuous                set interface promiscuous [on|off] <interface>
+  set interface proxy-arp                  set interface proxy-arp <intfc> [enable|disable]
+  set interface reassembly                 set interface reassembly <interface-name> [on|off|ip4|ip6]
+  set interface rss queues                 set interface rss queues <interface> <list <queue-list>>
+  set interface rx-mode                    set interface rx-mode <interface> [queue <n>] [polling | interrupt | adaptive]
+  set interface rx-placement               set interface rx-placement <interface> [queue <n>] [worker <n> | main]
+  set interface secondary-mac-address      set interface secondary-mac-address <interface> <mac-address> [(add|del)]
+  set interface span                       set interface span <if-name> [l2] {disable | destination <if-name> [both|rx|tx]}
+  set interface state                      set interface state <interface> [up|down|punt|enable]
+  set interface tag                        set interface tag <interface> <tag>
+  set interface tcp-mss-clamp              set interface tcp-mss-clamp <interface-name> ip4 [enable|disable|rx|tx] ip4-mss <size> ip6 [enable|disable|rx|tx] ip6-mss <size>
+  set interface unnumbered                 set interface unnumbered [<interface> use <interface> | del <interface>]
+  set ioam analyse                         set ioam analyse [export-ipfix-collector] [disable] [listen-ipfix]
+  set ioam export ipfix                    set ioam export ipfix collector <ip4-address> src <ip4-address>
+  set ioam ip6 cache                       set ioam ip6 cache sr_localsid <ip6 address> [disable]
+  set ioam ip6 sr-tunnel-select            set ioam ip6 sr-tunnel-select [disable] [oneway|rtt] [wait_for_responses <n|default 3>]   [sr_localsid <ip6 address>]
+  set ioam rewrite                         set ioam [trace] [pot] [seqno] [analyse]
+  set ioam-trace profile                   set ioam-trace              trace-type <0x1f|0x3|0x9|0x11|0x19> trace-elts <nn> trace-tsp <0|1|2|3>              node-id <node id in hex> app-data <app_data in hex>
+  set ip classify                          set ip classify intfc <interface> table-index <classify-idx>
+  set ip flow-hash                         set ip flow-hash table <table-id> [src] [dst] [sport] [dport] [proto] [reverse]
+  set ip neighbor                          set ip neighbor [del] <intfc> <ip-address> <mac-address> [static] [no-fib-entry] [count <count>] [fib-id <fib-id>] [proxy <lo-addr> - <hi-addr>]
+  set ip source-and-port-range-check       set ip source-and-port-range-check vrf <table-id> <ip-addr>/<mask> {port nn | range <nn> - <nn>} [del]
+  set ip6 address                          set ip6 address <interface> [prefix group <string>] <address> [del]
+  set ip6 classify                         set ip6 classify intfc <interface> table-index <classify-idx>
+  set ip6 flow-hash                        set ip6 flow-hash table <table-id> [src] [dst] [sport] [dport] [proto] [reverse]
+  set ip6 nd proxy                         set ip6 nd proxy <interface> [del] <host-ip>
+  set ipfix classify stream                set ipfix classify stream[domain <domain-id>] [src-port <src-port>]
+  set ipfix exporter                       set ipfix exporter collector <ip4-address> [port <port>] src <ip4-address> [fib-id <fib-id>] [path-mtu <path-mtu>] [template-interval <template-interval>] [udp-checksum]
+  set ipsec async mode                     set ipsec async mode on|off
+  set l2tpv3 tunnel cookie                 set l2tpv3 tunnel cookie <intfc> local <hex> remote <hex>
+  set li                                   set li src <ip4-address> collector <ip4-address> udp-port <nnnn>
+  set lldp                                 set lldp [system-name <string>] [tx-hold <value>] [tx-interval <value>]
+  set logging class                        set logging class <class> [rate-limit <int>] [level <level>] [syslog-level <level>]
+  set logging size                         set logging size <int>
+  set logging unthrottle-time              set logging unthrottle-time <int>
+  set nat timeout                          set nat timeout [udp <sec> | tcp-established <sec> tcp-transitory <sec> | icmp <sec> | reset]
+  set nat workers                          set nat workers <workers-list>
+  set nat44 session limit                  set nat44 session limit <limit> [vrf <table-id>]
+  set node function                        set node function <node-name> <variant-name>
+  set nsh-md2-ioam export ipfix            set nsh-md2-ioam export ipfix collector <ip4-address> src <ip4-address>
+  set nsh-md2-ioam-transit                 set nsh-ioam-lisp-gpe-transit dst-ip <dst_ip> [outer-fib-index <outer_fib_index>] [disable]
+  set nsim                                 set nsim delay <time> bandwidth <bps> packet-size <nbytes>
+    [packets-per-drop <nn>][drop-fraction <f64: 0.0 - 1.0>]
+  set policer classify                     set policer classify interface <int> [ip4-table <index>]
+  [ip6-table <index>] [l2-table <index>] [del]
+  set pot profile                          set pot profile name <string> id [0-1] [validator-key 0xu64]                   prime-number 0xu64 secret_share 0xu64 lpc 0xu64                   polynomial2 0xu64 bits-in-random [0-64] 
+  set pot profile-active                   set pot profile-active name <string> id [0-1]
+  set punt                                 set punt [IPV4|ip6|ipv6] [UDP|tcp] [del] [ALL|<port-num>]
+  set sr encaps hop-limit                  set sr encaps hop-limit <value>
+  set sr encaps source                     set sr encaps source addr <ip6_addr>
+  set sw_scheduler                         set sw_scheduler worker <idx> crypto <on|off>
+  set syslog filter                        set syslog filter severity <severity>
+  set syslog sender                        set syslog sender collector <ip4-address> [port <port>] src <ip4-address> [vrf-id <vrf-id>] [max-msg-size <max-msg-size>]
+  set tap offload                          set tap offload {<interface> | sw_if_index <sw_idx>} <gso-enable [gro-coalesce]  | gso-disable | csum-offload-enable |csum-offload-disable>
+  set terminal ansi                        set terminal ansi [on|off]
+  set terminal history                     set terminal history [on|off] [limit <lines>]
+  set terminal pager                       set terminal pager [on|off] [limit <lines>]
+  set udp-ping export-ipfix                set udp-ping export-ipfix [disable]
+  set udp-ping                             set udp-ping src <local IPv6 address>  src-port-range <local port range>       dst <remote IPv6 address> dst-port-range <destination port range>       interval <time interval in sec for which ping packet will be sent>       [disable]
+  set urpf                                 set urpf [ip4|ip6] [rx|tx] [off|strict|loose] <INTERFACE>
+  set urpf-accept                          urpf-accept [table <table-id>] [add|del] <PREFIX>
+  set virtio pci                           set virtio pci {<interface> | sw_if_index <sw_idx>} [gso-enabled | csum-offload-enabled | offloads-disabled]
+  set vxlan default-port                   set vxlan default-port [nn]
+  set vxlan-gpe-ioam export ipfix          set vxlan-gpe-ioam export ipfix collector <ip4-address> src <ip4-address>
+  set vxlan-gpe-ioam rewrite               set vxlan-gpe-ioam [trace] [pot] [ppc <encap|decap>]
+  set vxlan-gpe-ioam-transit               set vxlan-gpe-ioam-transit dst-ip <dst_ip> [outer-fib-index <outer_fib_index>] [disable]
+  set vxlan-gpe-ioam                       set vxlan-gpe-ioam vxlan <src-ip> <dst_ip> <vnid> [disable]
+  show abf attach                          show abf attach <interface>
+  show abf policy                          show abf policy <value>
+  show acl-plugin acl                      show acl-plugin acl [index N]
+  show acl-plugin decode 5tuple            show acl-plugin decode 5tuple XXXX XXXX XXXX XXXX XXXX XXXX
+  show acl-plugin interface                show acl-plugin interface [sw_if_index N] [acl]
+  show acl-plugin lookup context           show acl-plugin lookup context [index N]
+  show acl-plugin lookup user              show acl-plugin lookup user [index N]
+  show acl-plugin macip acl                show acl-plugin macip acl [index N]
+  show acl-plugin macip interface          show acl-plugin macip interface
+  show acl-plugin memory                   show acl-plugin memory
+  show acl-plugin sessions                 show acl-plugin sessions
+  show acl-plugin tables                   show acl-plugin tables [ acl [index N] | applied [ lc_index N ] | mask | hash [verbose N] ]
+  show adj nbr                             show adj nbr [<adj_index>] [interface]
+  show adj                                 show adj [<adj_index>] [interface] [summary]
+  show api clients                         Client information
+  show api dump                            show api dump file <filename> [numeric | compare-current]
+  show api histogram                       show api histogram
+  show api message-table                   Message Table
+  show api plugin                          show api plugin
+  show api ring-stats                      Message ring statistics
+  show api trace-status                    Display API trace status
+  show app certificate                     list app certs and keys present in store
+  show app ns                              show app ns [table <id> [api-clients]]
+  show app                                 show app [app_id] [server|client] [mq] [verbose]
+  show arp proxy                           show ip arp
+  show bfd                                 show bfd [keys|sessions|echo-source]
+  show bier bift                           show bier bift [set <value>] [sd <value>] [bsl <value>]
+  show bier disp entry                     show bier disp entry index
+  show bier disp table                     show bier disp table [index]
+  show bier fib                            show bier fib [table-index] [bit-position]
+  show bier fmask                          show bier fmask
+  show bier imp                            show bier imp [index]
+  show bihash                              show bihash
+  show bond                                show bond [details]
+  show bridge-domain                       show bridge-domain [bridge-domain-id [detail|int|arp|bd-tag]]
+  show buffer metadata                     show buffer metadata
+  show buffers                             Show packet buffer allocation
+  show cdp                                 Show cdp command
+  show classifier-acls                     show classifier-acls
+  show classify filter                     show classify filter [verbose [nn]]
+  show classify flow                       show classify flow type [ip4|ip6]
+  show classify policer                    show classify policer type [ip4|ip6|l2]
+  show classify tables                     show classify tables [index <nn>]
+  show cli                                 show cli [mp-safe][not-mp-safe][hit][clear-hit]
+  show cli-sessions                        Show current CLI sessions
+  show clock                               show clock
+  show cnat client                         show cnat client
+  show cnat session                        show cnat session
+  show cnat snat                           show cnat snat
+  show cnat timestamp                      show cnat timestamp
+  show cnat translation                    show cnat translation <VIP>
+  show cpu                                 Show cpu information
+  show crypto async handlers               show crypto async handlers
+  show crypto async status                 show crypto async status
+  show crypto engines                      show crypto engines
+  show crypto handlers                     show crypto handlers
+  show cryptodev assignment                show cryptodev assignment
+  show det44 interfaces                    show det44 interfaces
+  show det44 mappings                      show det44 mappings
+  show det44 sessions                      show det44 sessions
+  show det44 timeouts                      show det44 timeouts
+  show dhcp client                         show dhcp client [intfc <intfc>][verbose]
+  show dhcp option-82-address interface    show dhcp option-82-address interface <interface>
+  show dhcp proxy                          Display dhcp proxy server info
+  show dhcp vss                            show dhcp VSS
+  show dhcp6 addresses                     show dhcp6 addresses
+  show dhcp6 clients                       show dhcp6 clients
+  show dhcpv6 link-address interface       show dhcpv6 link-address interface <interface>
+  show dhcpv6 proxy                        Display dhcpv6 proxy info
+  show dhcpv6 vss                          show dhcpv6 VSS
+  show dns cache                           show dns cache [verbose [nn]]
+  show dns servers                         show dns servers
+  show dpdk buffer                         show dpdk buffer
+  show dpdk crypto devices                 show dpdk crypto devices
+  show dpdk crypto placement verbose       show dpdk crypto placement verbose
+  show dpdk crypto placement               show dpdk crypto placement
+  show dpdk crypto pools                   show dpdk crypto pools
+  show dpdk hqos queue                     show dpdk hqos queue <interface> subport <subport_id>pipe <pipe_id> tc <tc_id> tc_q <queue_id>
+  show dpdk interface hqos placement       show dpdk interface hqos placement
+  show dpdk interface hqos                 show dpdk interface hqos <interface>
+  show dpdk physmem                        show dpdk physmem
+  show dpdk version                        show dpdk version
+  show dpo memory                          show dpo memory
+  show dslite aftr-tunnel-endpoint-address show dslite aftr-tunnel-endpoint-address
+  show dslite b4-tunnel-endpoint-address   show dslite b4-tunnel-endpoint-address
+  show dslite pool                         show dslite pool
+  show dslite sessions                     show dslite sessions
+  show errors                              Show error counts
+  show event-logger                        Show event logger info
+  show features                            show features [verbose]
+  show fib entry                           show fib entry
+  show fib entry-delegate                  show fib entry delegate
+  show fib memory                          show fib memory
+  show fib path-lists                      show fib path-lists
+  show fib paths                           show fib paths
+  show fib source                          show fib source [prio]
+  show fib uRPF                            show fib uRPF
+  show fib walk                            show fib walk
+  show flow entry                          show flow entry [index <index>]
+  show flow interface                      show flow interface <interface name>
+  show flow ranges                         show flow ranges
+  show flowprobe feature                   show flowprobe feature
+  show flowprobe params                    show flowprobe params
+  show flowprobe statistics                show flowprobe statistics
+  show flowprobe table                     show flowprobe table
+  show frame-queue histogram               show frame-queue histogram
+  show frame-queue                         show frame-queue trace
+  show fwabf attach                        show fwabf attach <interface>
+  show fwabf default_route                 show fwabf default_route [verbose]
+  show fwabf labels                        show fwabf labels [verbose]
+  show fwabf link                          show fwabf link [sw_if_index <sw_if_index> | <if name>]
+  show fwabf policy                        show fwabf policy <value>
+  show gbp bridge-domain                   show gbp bridge-domain
+  show gbp contract                        show gbp contract [src <SRC>] [dst <DST>]
+  show gbp endpoint                        show gbp endpoint
+  show gbp endpoint-group                  show gbp endpoint-group
+  show gbp ext-itf                         show gbp ext-itf
+  show gbp interface                       show gbp interface
+  show gbp recirc                          show gbp recirc
+  show gbp route-domain                    show gbp route-domain
+  show gbp scanner                         show gbp scanner
+  show gbp subnet                          show gbp subnet
+  show gbp vxlan                           show gbp vxlan
+  show gdb                                 Describe functions which can be called from gdb
+  show geneve tunnel                       show geneve tunnel
+  show gpe adjacency                       show gpe adjacency commands
+  show gpe encap                           show GPE encapulation mode
+  show gpe entry                           show gpe entry vni <vni> vrf <vrf> [leid <leid>] reid <reid>
+  show gpe interface                       show gpe interface
+  show gpe native-forward                  show gpe native-forward
+  show gpe sub-interface                   show gpe sub-interface
+  show gpe tenant                          show gpe tenant
+  show gpe tunnel                          show gpe tunnel commands
+  show graph                               show graph [node <index>|<name>] [want_arcs] [input|trace_supported] [drop] [output] [punt] [handoff] [no_free] [polling] [interrupt]
+  show gre tunnel                          show gre tunnel commands
+  show gtpu tunnel                         show gtpu tunnel
+  show hardware-interfaces                 show hardware-interfaces [brief|verbose|detail] [bond] [<interface> [<interface> [..]]] [<sw_idx> [<sw_idx> [..]]]
+  show http static server                  show http static server sessions cache [verbose [<nn>]]
+  show igmp config                         show igmp config
+  show igmp ssm-ranges                     show igmp ssm-ranges
+  show igmp timers                         show igmp timers
+  show ikev2 profile                       show ikev2 profile
+  show ikev2 sa                            show ikev2 sa [rspi <rspi>] [details]
+  show ila entries                         show ila entries
+  show inacl                               show inacl type [ip4|ip6|l2]
+  show init-function                       show init-function [init | enter | exit][verbose [nn]]
+  show interface l2 l2-emulation           show interface l2 l2-emulation
+  show interface rx-placement              show interface rx-placement
+  show interface secondary-mac-address     show interface secondary-mac-address [<interface>]
+  show interface span                      Shows SPAN mirror table
+  show interface tcp-mss-clamp             show interface tcp-mss-clamp [interface-name]
+  show interface                           show interface [address|addr|features|feat|vtr] [<interface> [<interface> [..]]] [verbose]
+  show ioam analyse                        show ioam analyser information
+  show ioam e2e                            show ioam e2e information
+  show ioam ip6 cache                      show ioam ip6 cache [verbose]
+  show ioam nsh-lisp-gpe trace             iOAM trace statistics
+  show ioam pot                            iOAM pot statistics
+  show ioam summary                        show ioam summary
+  show ioam trace                          iOAM trace statistics
+  show ioam vxlan-gpe trace                iOAM trace statistics
+  show ioam-trace profile                  show ioam-trace profile
+  show ip container                        show ip container <address> <interface>
+  show ip fib                              show ip fib [summary] [table <table-id>] [index <fib-id>] [<ip4-addr>[/<mask>]] [mtrie] [detail]
+  show ip local                            show ip local
+  show ip lookup                           show ip lookup [table <table-id>] [fib <fib-id>] [<ip4-addr>[/<mask>]]
+  show ip mfib                             show ip mfib [summary] [table <table-id>] [index <fib-id>] [<grp-addr>[/<mask>]] [<grp-addr>] [<src-addr> <grp-addr>]
+  show ip neighbor-config                  show ip neighbor-config
+  show ip neighbor-watcher                 show ip neighbors-watcher
+  show ip neighbors                        show ip neighbors [interface]
+  show ip neighbor                         show ip neighbor [interface]
+  show ip punt redirect                    show ip punt redirect
+  show ip source-and-port-range-check      show ip source-and-port-range-check vrf <table-id> <ip-addr> [port <n>]
+  show ip4 neighbors                       show ip4 neighbors [interface]
+  show ip4 neighbor                        show ip4 neighbor [interface]
+  show ip4 neighbor-sorted                 show ip4 neighbor-sorted
+  show ip4-full-reassembly                 show ip4-full-reassembly [details]
+  show ip4-sv-reassembly                   show ip4-sv-reassembly [details]
+  show ip6 addresses                       show ip6 addresses
+  show ip6 connection-tracker              show ip6 connection-tracker
+  show ip6 fib                             show ip6 fib [summary] [table <table-id>] [index <fib-id>] [<ip6-addr>[/<width>]] [detail]
+  show ip6 hbh                             show ip6 hbh
+  show ip6 interface                       show ip6 interface <interface>
+  show ip6 local                           show ip6 local
+  show ip6 mfib                            show ip mfib [summary] [table <table-id>] [index <fib-id>] [<grp-addr>[/<mask>]] [<grp-addr>] [<src-addr> <grp-addr>]
+  show ip6 neighbor-sorted                 show ip6 neighbor-sorted
+  show ip6 neighbors                       show ip6 neighbors [interface]
+  show ip6 neighbor                        show ip6 neighbor [interface]
+  show ip6 pd clients                      show ip6 pd clients
+  show ip6 prefixes                        show ip6 prefixes
+  show ip6 punt redirect                   show ip6 punt redirect
+  show ip6-full-reassembly                 show ip6-full-reassembly [details]
+  show ip6-ll                              show ip6-ll [summary] [interface] [<ip6-addr>[/<width>]] [detail]
+  show ip6-sv-reassembly                   show ip6-sv-reassembly [details]
+  show ipip tunnel                         show ipip tunnel commands
+  show ipip tunnel-hash                    show ipip tunnel-hash
+  show ipsec all                           show ipsec all
+  show ipsec backends                      show ipsec backends
+  show ipsec interface                     show ipsec interface
+  show ipsec protect                       show ipsec protect
+  show ipsec protect-hash                  show ipsec protect-hash
+  show ipsec sa                            show ipsec sa [index]
+  show ipsec spd                           show ipsec spd [index]
+  show ipsec tunnel                        show ipsec tunnel
+  show l2 rewrite entries                  show l2 rewrite entries
+  show l2 rewrite interfaces               show l2 rewrite interfaces
+  show l2fib                               show l2fib [all] | [bd_id <nn> | bd_index <nn>] [learn | add] | [raw]
+  show l2patch                             Show l2 interface cross-connect entries
+  show l2tpv3                              show l2tpv3 [verbose]
+  show l2xcrw                              show l2xcrw
+  show l3xc                                show l3xc
+  show lacp                                show lacp [<interface>] [details]
+  show lb vips                             show lb vips [verbose]
+  show lb                                  show lb
+  show lisp adjacencies                    show lisp adjacencies
+  show lisp eid-table map                  show lisp eid-table map l2|l3
+  show lisp eid-table                      show lisp eid-table [local|remote|eid <eid>]
+  show lisp locator-set                    Shows locator-sets
+  show lisp map-request itr-rlocs          Shows map-request itr-rlocs
+  show lisp map-request mode               show lisp map-request mode
+  show lisp map-resolvers                  show lisp map-resolvers
+  show lisp petr                           Show petr
+  show lisp pitr                           Show pitr
+  show lisp status                         show lisp status
+  show lldp                                show lldp [detail]
+  show load-balance                        show load-balance [<index>]
+  show load-balance-map                    show load-balance-map [<index>]
+  show logging configuration               show logging configuration
+  show logging                             show logging
+  show lookup-dpo                          show lookup-dpo [<index>]
+  show macro                               show macro [noevaluate]
+  show mactime                             show mactime [verbose]
+  show map domain                          show map domain index <n> [counters]
+  show map stats                           show map stats
+  show memif                               show memif [<interface>] [descriptors]
+  show memory                              show memory [api-segment][stats-segment][verbose]
+            [numa-heaps][map]
+  show mfib entry                          show mfib entry
+  show mfib interface                      show mfib interface
+  show mfib itf flags                      Flags applicable to an MFIB interfaces
+  show mfib route flags                    Flags applicable to an MFIB route
+  show mode                                show mode [<if-name1> <if-name2> ...]
+  show mpls fib                            show mpls fib [summary] [table <n>]
+  show mpls tunnel                         show mpls tunnel commands
+  show nat addr-port-assignment-alg        show nat addr-port-assignment-alg
+  show nat ha                              show nat ha
+  show nat mss-clamping                    show nat mss-clamping
+  show nat timeouts                        show nat timeouts
+  show nat workers                         show nat workers
+  show nat44 1to1 acl-actions              show nat44 1to1 acl-actions
+  show nat44 addresses                     show nat44 addresses [verbose]
+  show nat44 hash tables                   show nat44 hash tables [detail|verbose]
+  show nat44 interface address             show nat44 interface address
+  show nat44 interfaces                    show nat44 interfaces
+  show nat44 sessions                      show nat44 sessions [detail|metrics]
+  show nat44 static mappings               show nat44 static mappings
+  show nat44 summary                       show nat44 summary
+  show nat64 bib                           show nat64 bib all|tcp|udp|icmp|unknown
+  show nat64 interfaces                    show nat64 interfaces
+  show nat64 pool                          show nat64 pool
+  show nat64 prefix                        show nat64 prefix
+  show nat64 session table                 show nat64 session table all|tcp|udp|icmp|unknown
+  show nat66 interfaces                    show nat66 interfaces
+  show nat66 static mappings               show nat66 static mappings
+  show node counters                       Show node counters
+  show node                                show node [index] <node-name | node-index>
+  show nsh entry                           show nsh entry commands
+  show nsh map                             show nsh map commands
+  show nsim                                Display network delay simulator configuration
+  show one adjacencies                     show one adjacencies
+  show one eid-table map                   show one eid-table map l2|l3
+  show one eid-table                       show one eid-table [local|remote|eid <eid>]
+  show one l2 arp entries                  Show ONE L2 ARP entries
+  show one locator-set                     Shows locator-sets
+  show one map-register fallback-threshold show one map-register fallback-threshold
+  show one map-register state              show one map-register state
+  show one map-register ttl                show one map-register ttl
+  show one map-request itr-rlocs           Shows map-request itr-rlocs
+  show one map-request mode                show one map-request mode
+  show one map-resolvers                   show one map-resolvers
+  show one map-servers                     show one map servers
+  show one modes                           show one modes
+  show one ndp entries                     Show ONE NDP entries
+  show one petr                            Show petr
+  show one pitr                            Show pitr
+  show one rloc state                      show one RLOC state
+  show one statistics details              show ONE statistics
+  show one statistics status               show ONE statistics enable/disable status
+  show one status                          show one status
+  show outacl                              show outacl type [ip4|ip6|l2]
+  show packet-generator                    show packet-generator [verbose]
+  show pci                                 show pci [all]
+  show physmem                             show physmem [verbose | detail | map]
+  show plugins                             show loaded plugins
+  show policer pools                       show policer pools
+  show policer                             show policer [name]
+  show pot profile                         show pot profile
+  show pppoe fib                           show pppoe fib
+  show pppoe session                       show pppoe session
+  show punt client                         show client[s] registered with the punt infra
+  show punt db                             show the punt DB
+  show punt reasons                        show all punt reasons
+  show punt socket registrations           show punt socket registrations [l4|exception]
+  show punt stats                          show the punt stats
+  show qos egress map                      show qos egress map id %d
+  show qos mark                            show qos mark [interface]
+  show qos mark-buffer-metadata-map        show qos mark-buffer-metadata-map <interface>
+  show qos record                          show qos record [interface]
+  show qos store                           show qos store [interface]
+  show replicate                           show replicate [<index>]
+  show runtime                             Show packet processing runtime
+  show segment-manager                     show segment-manager [segments][verbose]
+  show session fifo trace                  show session fifo trace <session>
+  show session rules                       show session rules [<proto> appns <id> <lcl-ip/plen> <lcl-port> <rmt-ip/plen> <rmt-port> scope <scope>]
+  show session                             show session [verbose [n]] [listeners <proto>] [<session-id> [elog]] [thread <n> [index <n>] [proto <proto>] [state <state>] [range <min> [<max>]] [protos] [states] 
+  show sr encaps hop-limit                 show sr encaps hop-limit
+  show sr encaps source addr               show sr encaps source addr
+  show sr localsids behaviors              show sr localsids behaviors
+  show sr localsids                        show sr localsids
+  show sr mpls policies                    show sr mpls policies
+  show sr mpls steering policies           show sr mpls steering policies
+  show sr policies                         show sr policies
+  show sr policy behaviors                 show sr policy behaviors
+  show sr steering-policies                show sr steering-policies
+  show statistics segment                  show statistics segment [verbose]
+  show stn rules                           
+  show svs                                 Source VRF select show
+  show sw_scheduler workers                show sw_scheduler workers
+  show syslog filter                       show syslog filter
+  show syslog sender                       show syslog sender
+  show tap                                 show tap {<interface>] [descriptors]
+  show tap-inject map interface            show tap-inject map interface
+  show tap-inject routes                   show tap-inject routes
+  show tap-inject                          show tap-inject [<if name> | sw_if_index <sw_if_index> | tap_name <name in linux>]
+  show tcp half-open                       show tcp half-open [verbose <n>] [range <start> <end>]
+  show tcp punt                            show tcp punt
+  show tcp scoreboard trace                show tcp scoreboard trace <connection>
+  show tcp stats                           show tcp stats
+  show teib                                show teib
+  show terminal                            Show current session terminal settings
+  show threads                             Show threads
+  show trace                               Show trace buffer [max COUNT]
+  show tun                                 show tun {<interface>] [descriptors]
+  show udp encap                           show udp encap [ID]
+  show udp punt                            show udp punt [ipv4|ipv6]
+  show udp-ping summary                    Summary of udp-ping
+  show unix errors                         Show Unix system call error history
+  show unix files                          Show Unix files in use
+  show version                             show version [verbose] [cmdline]
+  show vhost-user                          show vhost-user [<interface> [<interface> [..]]] [[descriptors] [verbose]]
+  show virtio pci                          show virtio pci [<interface>] [descriptors | desc] [debug-device]
+  show vlib frame-allocation               Show node dispatch frame statistics
+  show vlib graph                          Show packet processing node graph
+  show vlib graphviz                       Dump packet processing node graph as a graphviz dotfile
+  show vmxnet3                             show vmxnet3 [[<interface>] ([desc] | ([rx-comp] | [rx-desc-0] | [rx-desc-1] | [tx-comp] | [tx-desc]) [<slot>])]
+  show vrrp vr                             show vrrp vr [(<intf_name>|sw_if_index <n>)]
+  show vxlan tunnel                        show vxlan tunnel [raw]
+  show vxlan-gbp tunnel                    show vxlan-gbp tunnel [raw]
+  show vxlan-gpe                           show vxlan-gpe commands
+  show wireguard interface                 show wireguard
+  show wireguard peer                      show wireguard peer
+  sr localsid                              sr localsid (del) address XX:XX::YY:YY(fib-table 8) behavior STRING
+  sr mpls policy te                        sr mpls policy te bsid xxxxx endpoint x.x.x.x color 12341234
+  sr mpls policy                           sr mpls policy [add||del||mod] bsid 2999 next 10 next 20 next 30 (weight 1) (spray)
+  sr mpls steer                            sr mpls steer (del) l3 <ip_addr/mask> via [sr policy bsid <mpls_label> || next-hop <ip46_addr> color <u32> co <0|1|2|3> ](fib-table <fib_table_index>)(vpn-label 500)
+  sr policy                                sr policy [add||del||mod] [bsid 2001::1||index 5] next A:: next B:: next C:: (weight 1) (fib-table 2) (encap|insert)
+  sr steer                                 sr steer (del) [l3 <ip_addr/mask>|l2 <sf_if>] via [index <sr_policy_index>|bsid <bsid_ip6_addr>] (fib-table <fib_table_index>)
+  stn rule                                 address <addr> interface <iface> [del]
+  suspend                                  suspend debug CLI for 30ms
+  svs enable                               Source VRF select [enable|disable] [ip4|ip6] <table-id> X <interface>
+  svs route                                Source VRF select route [add|delete] <table-id> <prefix> <src-table-id>
+  svs table                                Source VRF select table [add|delete] [ip4|ip6] table-id X
+  tap-inject enable-ip4-input interface    tap-inject enable-ip4-input interface <interface> [del]
+  tap-inject enable-ip4-output interface   tap-inject enable-ip4-output interface <interface> [del]
+  tap-inject map interface                 tap-inject map interface <interface_src> <interface_dst> [del]
+  tap-inject map tap                       tap-inject map tap <tap_if_index> <interface> [del]
+  tap-inject show redirect-config          tap-inject show redirect-config
+  tcp debug                                tcp [show] [debug group <N> level <N>]
+  tcp replay scoreboard                    tcp replay scoreboard <connection>
+  tcp src-address                          tcp src-address <ip-addr> [- <ip-addr>] add src address range
+  test avf                                 test avf [<interface> | sw_if_index <sw_idx>] [irq] [elog-on] [elog-off]
+  test cnat scanner                        test cnat scanner
+  test dns expire                          test dns expire <name>
+  test dns format                          test dns format
+  test dns unformat                        test dns unformat <name> [ip4][ip6]
+  test dpdk buffer                         test dpdk buffer [allocate <nn>] [free <nn>]
+  test echo clients                        test echo clients [nclients %d][[m|g]bytes <bytes>][test-timeout <time>][syn-timeout <time>][no-return][fifo-size <size>][private-segment-count <count>][private-segment-size <bytes>[m|g]][preallocate-fifos][preallocate-sessions][client-batch <batch-size>][uri <tcp://ip/port>][test-bytes][no-output]
+  test echo server                         test echo server proto <proto> [no echo][fifo-size <mbytes>][rcv-buf-size <bytes>][prealloc-fifos <count>][private-segment-count <count>][private-segment-size <bytes[m|g]>][uri <tcp://ip/port>]
+  test fib-walk-process                    test fib-walk-process [enable|disable]
+  test flow                                test flow [add|del|enable|disable] [index <id>] [src-ip <ip-addr/mask>] [dst-ip <ip-addr/mask>] [ip6-src-ip <ip-addr/mask>] [ip6-dst-ip <ip-addr/mask>] [src-port <port/mask>] [dst-port <port/mask>] [proto <ip-proto>] [gtpc teid <teid>] [gtpu teid <teid>] [vxlan <vni>] [session id <session>] [spi <spi>][next-node <node>] [mark <id>] [buffer-advance <len>] [redirect-to-queue <queue>] [drop] [rss function <name>] [rss types <flow type>]
+  test frame-queue nelts                   test frame-queue nelts (4,8,16,32)
+  test frame-queue threshold               test frame-queue threshold N (0=no limit)
+  test http server                         test http server
+  test igmp timers                         Change the default values for IGMP timers - only sensible during unit tests
+  test ip6 connection-tracker              test ip6 connection-tracker
+  test ip6 link                            test ip6 link <mac-address>
+  test l2fib                               test l2fib [add|del|check] mac <base-addr> count <nn>
+  test l2patch                             test l2patch rx <intfc> tx <intfc> [del]
+  test lb flowtable flush                  test lb flowtable flush
+  test log                                 test log <level> <class> <subclass> <message>
+  test lookup                              test lookup <ipv4-addr> [table <fib-id>] [count <nn>]
+  test lt2p counters                       increment all active counters
+  test one nsh add-placeholder-decap-node  test one nsh add-placeholder-decap-node commands
+  test one nsh                             test gpe nsh pcap <path-to-pcap-file>
+  test policer                             intfc <intfc> policer <policer-config-name> [del]
+  test proxy server                        test proxy server [server-uri <tcp://ip/port>][client-uri <tcp://ip/port>][fifo-size <nn>[k|m]][max-fifo-size <nn>[k|m]][high-watermark <nn>][low-watermark <nn>][rcv-buf-size <nn>][prealloc-fifos <nn>][private-segment-size <mem>][private-segment-count <nn>]
+  test rdma dump                           test rdma dump {<interface> | sw_if_index <sw_idx>}
+  test syslog                              test syslog <facility> <severity> <app-name> <msgid> [sd-id <sd-id> sd-param <name> <value>] [<message]
+  test vmxnet3                             test vmxnet3 <interface> | sw_if_index <sw_idx> [irq] [elog-on] [elog-off]
+  trace add                                trace add <input-graph-node> <add'l-pkts-for-node-> [filter] [verbose]
+  trace filter                             trace filter none | [include|exclude] NODE COUNT
+  trace frame-queue                        trace frame-queue (on|off)
+  udp encap                                udp encap [add|del] <id ID> <src-ip> <dst-ip> [<src-port>] <dst-port>  [src-port-is-entropy] [table-id <table>]
+  undefine                                 undefine <variable-name>
+  vrrp peers                               vrrp peers (<intf_name>|sw_if_index <n>) vr_id <n> [ipv6] <peer1_addr> [<peer2_addr> ...]
+  vrrp proto                               vrrp proto (start|stop) (<intf_name>|sw_if_index <n>) vr_id <n> [ipv6]
+  vrrp vr add                              vrrp vr add <interface> [vr_id <n>] [ipv6] [priority <value>] [interval <value>] [no_preempt] [accept_mode] [unicast] [<ip_addr> ...]
+  vrrp vr del                              vrrp vr del <interface> [vr_id <n>] [ipv6]
+  vrrp vr track-if                         vrrp vr track-if (add|del) (<intf_name>|sw_if_index <n>) vr_id <n> [ipv6] track-index <n> priority <n> [ track-index <n> priority <n> ...]
+  wait                                     wait <sec>
+  wireguard create                         wireguard create listen-port <port> private-key <key> src <IP> [generate-key]
+  wireguard delete                         wireguard delete <interface>
+  wireguard peer add                       wireguard peer add <wg_int> public-key <pub_key_other>endpoint <ip4_dst> allowed-ip <prefix>dst-port [port_dst] persistent-keepalive [keepalive_interval]
+  wireguard peer remove                    wireguard peer remove <index>
