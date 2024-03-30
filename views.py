@@ -466,13 +466,11 @@ def traceroute(request: HttpRequest):
     return HttpResponse(status=400)
 
 def poweroff(request: HttpRequest):
-    #os.system("init 0") 
-    print("hi")
+    os.system("init 0")
     return HttpResponse("System shutting down...")
 
 def restart(request: HttpRequest):
-    os.system("init 0") 
-    print("hi")       
+    os.system("init 6")         
     return HttpResponse("System restarting...")
 
 def download_logfile(request):
@@ -529,8 +527,6 @@ def delroute(request: HttpRequest):
                 dat = data1["network"]["ethernets"]["eth1"]["routes"]
         
         for r in subnet_info:            
-#            to_delete = {"to": r["subnet"],
- #                        "via": r["gateway"]}
             dat = [item for item in dat if item.get('to') != r['subnet']]
         data1["network"]["ethernets"]["eth1"]["routes"] = dat
         with open("/etc/netplan/00-installer-config.yaml", "w") as f:
