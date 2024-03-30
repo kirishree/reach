@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReachLink</title>
+    <link rel="icon" href="https://assets.cloudetel.com/cloudeteldev/assets/cloudetel_logo.png" type="image/png">
+    <style>
+        /* Add your custom styles for tabs and content area here */
+        label {
+            display: inline-block;
+            width: 150px; /* Adjust as needed */
+            font-family: "Inter", sans-serif;
+        }
+        h2 {
+            font-family: "Inter", sans-serif;            
+        }
+        .header {
+            text-align: center;
+            padding: 20px;
+            background-color: #1173ea;
+            border-bottom: 1px solid black;
+            color: white;
+        }
+        .btn {
+            background-color: #4338ca;
+            /*  
+            Other color options:
+            #4d7c0f
+            #166534
+            #059669
+            #1e40af
+            */
+            border: none;
+            border-radius: 5px;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            width: 12rem;
+        }
+
+        .btn:hover {
+            background: #312e81;
+            cursor: pointer;
+        }
+        .logo {
+            float: left; /* Float the image to the left */
+            margin-right: 10px; /* Add margin to the right for spacing */
+        }
+        .title {
+            font-family: "Inter", sans-serif;
+            font-size: 24px; /* Adjust font size */
+            font-style: normal; /* Set font style to italic */
+            margin: 0; /* Remove default margin */            
+        }
+        .tabs {
+            float: left; /* Align the tabs to the left side */
+            width: 150px; /* Adjust the width of the tabs container as needed */
+            height: 125vh; /* Make the tabs container full height */
+            /*background-color: #f0f0f0; /* Background color of the tabs container */
+            border: none;
+            border-top: none;
+            border-bottom: none;
+            border-left: none;
+            border-right: 1px solid rgb(196, 195, 195);
+        }
+        .tablink {
+            display: block; /* Display the buttons as block elements */
+            width: 100%; /* Make the buttons full width */
+            padding: 10px; /* Add padding to the buttons */
+            text-align: left; /* Align the text of the buttons to the left */
+            border: none; /* Remove border from the buttons */
+            background-color: transparent; /* Set transparent background color */
+            cursor: pointer; /* Change cursor to pointer on hover */
+        }
+        .tablink:hover {
+            background-color: #ddd; /* Change background color on hover */
+        }
+        .tabcontent {
+            margin-left: 170px; /* Add margin to the content area to create space for the tabs */
+            /* Add additional styles for the content area as needed */
+            
+        }
+        .status-registered {
+            background-color: rgb(15, 157, 15);
+            font-family: "Inter", sans-serif;
+            color: white;
+        }
+        .status-notregistered {
+            background-color: rgb(218, 9, 9);
+            font-family: "Inter", sans-serif;
+            color: white;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="header">
+        <img src="https://assets.cloudetel.com/cloudeteldev/assets/cloudetel.png" alt="Cloudetel Logo" class="logo">
+        <h1 class="title">ReachLink Dashboard</h1>
+    </div>
+    <div class="tabs">
+        
+        <button class="tablink" onclick="openTab('configurewan')">WAN</button>
+        <button class="tablink" onclick="openTab('configurelan')">LAN</button>
+        <button class="tablink" onclick="openTab('optionalinterface')">Optional Interface</button>
+        <button class="tablink" onclick="openTab('routing')">Routing Table</button>
+        <button class="tablink" onclick="openTab('register')">Register</button>
+        <button class="tablink" onclick="openTab('settimezone')">Time Zone</button>
+        <button class="tablink" onclick="openTab('log')">Log</button>
+        <button class="tablink" onclick="openTab('diagnostics')">Diagnostics</button>
+        <button class="tablink" onclick="openTab('changepassword')">Change Password</button>
+        <button class="tablink" onclick="openTab('logout')">Logout</button>
+
+    </div>    
+    <div id="configurewan" class="tabcontent">
+        <!-- Include the content of configure.html here -->       
+        <h2 style="color: rgb(128, 126, 126); font-family: 'Inter', sans-serif;">Configure WAN Interface</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form1.as_p }}
+            <button type="submit" class="btn">Submit</button>
+        </form>        
+    </div>
+    <div id="configurelan" class="tabcontent" style="display:none;">
+        <!-- Include the content of configurelan.html here -->       
+        <h2 style="color: rgb(128, 126, 126); font-family: 'Inter', sans-serif;">Configure LAN Interface</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form2.as_p }}
+            <button type="submit" class="btn">Submit</button>
+        </form>        
+    </div>
+    <div id="register" class="tabcontent" style="display:none;">
+        {% if status %}        
+            <h2 style="color: rgb(128, 126, 126); font-family: 'Inter', sans-serif;">Already Registered</h2>            
+        {% else %}
+            <h2 style="color: rgb(128, 126, 126); font-family: 'Inter', sans-serif;">Register</h2>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn">Submit</button>
+            </form>
+        {% endif %}        
+    </div>
+    <div id="optionalinterface" class="tabcontent" style="display:none;">
+        <!-- Include the content of configurelan.html here --> 
+        {% if form3_info %}      
+            <h2 style="color: rgb(128, 126, 126); font-family: 'Inter', sans-serif;">Configure Optional Interface</h2>
+            <form method="post">
+                {% csrf_token %}
+                {{ form3.as_p }}
+                <button type="submit" class="btn">Submit</button>
+            </form>  
+        {% else %}
+            <p style="color: rgb(36, 35, 35); font-family: 'Inter', sans-serif;">Your device have only two interfaces. If you need 3rd interface, can you pl stop this ReachLink device & add it.</p>
+            <p style="color: rgb(36, 35, 35); font-family: 'Inter', sans-serif;">Click this below button to Power-off this device.</p>
+            <p style="color:  rgb(36, 35, 35); font-family: 'Inter', sans-serif;">Pl Start the device once added your Interface</p>
+            <a href="{% url 'poweroff' %}" class="btn">Power-off</a>
+        {% endif %}              
+    </div>
+    <div id="diagnostics" class="tabcontent" style="display:none;">        
+        <h2 style="color: rgb(128, 126, 126); font-family: 'Inter', sans-serif;">Ping</h2>
+        <form id="ping-form" method="post">
+            {% csrf_token %}
+            {{ form6.as_p }}
+            <button type="submit" class="btn">Submit</button>
+        </form> 
+        <br><br> <!-- Add some line breaks for space -->        
+        <textarea id="ping-output" rows="10" style="width: 700px;"></textarea>    
+        
+        <h2 style="color: rgb(128, 126, 126); font-family: 'Inter', sans-serif;">Traceroute</h2>
+        <form id="traceroute-form" method="post">
+            {% csrf_token %}
+            {{ form7.as_p }}
+            <button type="submit" class="btn">Submit</button>
+        </form> 
+        <br><br> <!-- Add some line breaks for space -->
+        
+        <textarea id="traceroute-output" rows="10" style="width: 700px;"></textarea> 
+        <h2 style="color: rgb(128, 126, 126); font-family: 'Inter', sans-serif;">Restart</h2>  
+        <a href="{% url 'restart' %}" class="btn">Restart</a>
+    </div>
+    <div id="settimezone" class="tabcontent" style="display:none;">        
+        <h2 style="color: rgb(128, 126, 126); font-family: 'Inter', sans-serif;">Set Time Zone</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form4.as_p }}
+            <button type="submit" class="btn">Submit</button>
+        </form>        
+    </div>
+    <div id="changepassword" class="tabcontent" style="display:none;">        
+        <h2 style="color: rgb(128, 126, 126); font-family: 'Inter', sans-serif;">Change Password</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form5.as_p }}
+            <button type="submit" class="btn">Submit</button>
+        </form>        
+    </div>
+    <div id="logout" class="tabcontent" style="display:none;">        
+        <h2 style="color: rgb(128, 126, 126); font-family: 'Inter', sans-serif;">Logout</h2>
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn">Logout</button>
+        </form>         
+    </div>
+    <div id="routing" class="tabcontent" style="display:none;">        
+        <h2 style="color: rgb(128, 126, 126); font-family: 'Inter', sans-serif;">Routing Table</h2>        
+        <table border="1" style="border-collapse: collapse; width: 50%;">
+            <thead>
+                <tr style="background-color: #d3d3d3;">
+                    <th style="padding: 8px; text-align: left;">Destination</th>
+                    <th style="padding: 8px; text-align: left;">Gateway</th>
+                    <th style="padding: 8px; text-align: left;">Protocol</th>                    
+                    <th style="padding: 8px; text-align: left;">Interface</th>
+                    <th style="padding: 8px; text-align: left;">Metric</th>
+                        <!-- Add more inline styles as needed -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for routes in routing_table %}
+                <tr style="background-color: {% cycle '#ffffff' '#f2f2f2' %};">
+                    <td style="padding: 8px;">{{ routes.destination }}</td>
+                    <td style="padding: 8px;">{{ routes.gateway }}</td>
+                    <td style="padding: 8px;">{{ routes.protocol }}</td>
+                    <td style="padding: 8px;">{{ routes.interface_name }}</td>
+                    <td style="padding: 8px;">{{ routes.metric }}</td>
+
+                    <!-- Add more inline styles as needed -->
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div id="log" class="tabcontent" style="display:none;">        
+        <h2 style="color: rgb(128, 126, 126); font-family: 'Inter', sans-serif;">Log</h2>
+        <label for="lines-per-page">Lines Per Page:</label>
+        <input type="number" id="lines-per-page" value="10" min="1" onchange="updateLinesPerPage()">
+        <label for="log-level">Filter by Log Level:</label>
+        <select id="log-level" onchange="filterByLogLevel()">
+            <option value="all">All</option>
+            <option value="INFO">INFO</option>
+            <option value="ERROR">ERROR</option>
+            <option value="DEBUG">DEBUG</option>            
+        </select>
+        <ul id="logfile-content">
+            {% for line in logfile_content %}
+                <li>{{ line }}</li>
+            {% endfor %}
+        </ul>
+        <button onclick="prevPage()" class="btn">Previous</button>
+        <button onclick="nextPage()" class="btn">Next</button> 
+        <a href="{% url 'download_logfile' %}" class="btn">Download Logfile</a>
+    </div>
+
+    <script>
+        function openTab(tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            document.getElementById(tabName).style.display = "block";
+        }
+        var page = 1; // Initial page number
+        var linesPerPage = 10; // Number of lines to display per page
+        var totalLines = {{ logfile_content|length }}; // Total number of lines in the logfile
+        function updateLinesPerPage() {
+            linesPerPage = parseInt(document.getElementById("lines-per-page").value);
+            updateLogfileContent();
+        }
+        function prevPage() {
+            if (page > 1) {
+                page--;
+                updateLogfileContent();
+            }
+        }
+
+        function nextPage() {
+            var totalPages = Math.ceil(totalLines / linesPerPage);
+            if (page < totalPages) {
+                page++;
+                updateLogfileContent();
+            }
+        }
+
+        function filterByLogLevel() {
+            var selectedLevel = document.getElementById("log-level").value;
+            var logfileLines = document.getElementById("logfile-content").getElementsByTagName("li");
+
+            for (var i = 0; i < logfileLines.length; i++) {
+                var line = logfileLines[i].textContent.toLowerCase();
+                if (selectedLevel === "all" || line.includes(selectedLevel.toLowerCase())) {
+                    logfileLines[i].style.display = "block";
+                } else {
+                    logfileLines[i].style.display = "none";
+                }
+            }
+            
+        }
+        function updateLogfileContent() {
+            var startIndex = (page - 1) * linesPerPage;
+            var endIndex = startIndex + linesPerPage;
+            var logfileLines = document.getElementById("logfile-content").getElementsByTagName("li");
+        
+            // Hide all lines
+            for (var i = 0; i < logfileLines.length; i++) {
+                logfileLines[i].style.display = "none";
+            }
+        
+            // Display lines for the current page
+            for (var i = startIndex; i < Math.min(endIndex, totalLines); i++) {
+                logfileLines[i].style.display = "block";
+            }
+        }
+        // Initial update to display first page
+        updateLogfileContent();
+        document.getElementById("ping-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var formData = new FormData(this);
+            fetch("/ping", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                var lines = data.split("\n");
+                document.getElementById("ping-output").value = lines.join("\n");
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+        });
+
+        document.getElementById("traceroute-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var formData = new FormData(this);
+            fetch("/traceroute", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                var lines = data.split("\n");
+                document.getElementById("traceroute-output").value = lines.join("\n");
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+        });
+    </script>
+</body>
+</html>
